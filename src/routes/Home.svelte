@@ -1,5 +1,5 @@
 <script>
-  import Main from './Main.svelte'
+  import Main from '../components/Main.svelte'
 
   let count = 0
 </script>

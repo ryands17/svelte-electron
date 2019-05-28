@@ -10,10 +10,20 @@ module.exports = {
   bail: isProd,
   devtool: isDev ? 'cheap-module-source-map' : false,
 
+  stats: {
+    all: false,
+    modules: true,
+    errors: true,
+    warnings: true,
+    moduleTrace: true,
+    errorDetails: true,
+  },
+
   devServer: {
     contentBase: path.join(__dirname, 'build'),
     historyApiFallback: true,
     hot: false,
+    open: true,
   },
 
   entry: ['./src/index.js'],
