@@ -15,7 +15,7 @@ You will also see any lint errors in the console.
 ### `npm run build`
 
 Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+It correctly compiles Svelte in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
@@ -24,6 +24,7 @@ You can use any of the deployment sites like [Netlify](https://www.netlify.com/)
 
 Todos:
 
-- [ ] Import all .svelte files dynamically (add a loader as well)
 - [ ] Add emotion based styling
+- [ ] Add Navbar component for route changes
+- [ ] Import all .svelte files dynamically (add a loader as well)
 - [ ] Add environment variables support
