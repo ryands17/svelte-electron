@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -13,6 +14,7 @@ module.exports = {
   stats: {
     all: false,
     modules: true,
+    maxModules: 50,
     errors: true,
     warnings: true,
     moduleTrace: true,
@@ -24,6 +26,7 @@ module.exports = {
     historyApiFallback: true,
     hot: false,
     open: true,
+    stats: 'normal',
   },
 
   entry: ['./src/index.js'],
@@ -94,5 +97,5 @@ module.exports = {
           : undefined
       )
     ),
-  ],
+  ].concat(isDev ? [new webpack.HotModuleReplacementPlugin()] : []),
 }

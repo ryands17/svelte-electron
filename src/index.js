@@ -15,7 +15,6 @@ app.path('/', async (req, res) => {
 })
 
 app.path('/about', async (req, res) => {
-  // res.mount(Base, { req, nav: app })
   const { default: About } = await import('./routes/About.svelte')
   res.mount(About)
 })
