@@ -70,6 +70,7 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash:8].css',
+      chunkFilename: '[name].[id].css',
     }),
 
     new HtmlWebpackPlugin(
