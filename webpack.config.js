@@ -29,6 +29,7 @@ module.exports = {
     hot: false,
     open: true,
     stats: 'normal',
+    port: 3000,
   },
 
   entry: ['./src/index.js'],
