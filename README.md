@@ -33,7 +33,8 @@ rename it to .env and then add your own variables. Will add support for multiple
 
 Todos:
 
-- [ ] Add emotion based styling
-- [ ] Add Navbar component for route changes
-- [ ] Import all .svelte files dynamically (add a loader as well)
-- [x] Add environment variables support
+- [ ] Add Navbar component for route navigation
+- [ ] Import component based .svelte files dynamically (add a loader as well)
+- [x] ~~Add environment variables support~~
+- [ ] Add emotion based styling (enhancement)
+- [ ] Add multiple environment files (.env.development, .env.production)
