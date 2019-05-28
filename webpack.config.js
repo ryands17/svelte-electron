@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // const PreloadWebpackPlugin = require('preload-webpack-plugin')
 const Critters = require('critters-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = process.env.NODE_ENV === 'production'
@@ -71,6 +72,9 @@ module.exports = {
   },
 
   plugins: [
+    new Dotenv({
+      systemvars: true,
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash:8].css',
       chunkFilename: '[name].[id].css',

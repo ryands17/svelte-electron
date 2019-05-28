@@ -20,11 +20,20 @@ It correctly compiles Svelte in production mode and optimizes the build for the 
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
-You can use any of the deployment sites like [Netlify](https://www.netlify.com/), [Surge](https://surge.sh/), [Now](https://zeit.co/now/)
+You can use any of the deployment sites like
+
+- [Netlify](https://www.netlify.com/)
+- [Surge](https://surge.sh/)
+- [Now](https://zeit.co/now/)
+
+### Adding environment variables
+
+For adding environment variables, you can create a copy of the `.env.example` file,
+rename it to .env and then add your own variables. Will add support for multiple .env files soon
 
 Todos:
 
 - [ ] Add emotion based styling
 - [ ] Add Navbar component for route changes
 - [ ] Import all .svelte files dynamically (add a loader as well)
-- [ ] Add environment variables support
+- [x] Add environment variables support
