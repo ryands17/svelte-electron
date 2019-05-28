@@ -2,6 +2,8 @@ const path = require('path')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+// const PreloadWebpackPlugin = require('preload-webpack-plugin')
+const Critters = require('critters-webpack-plugin')
 
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = process.env.NODE_ENV === 'production'
@@ -98,5 +100,21 @@ module.exports = {
           : undefined
       )
     ),
-  ].concat(isDev ? [new webpack.HotModuleReplacementPlugin()] : []),
+  ].concat(
+    isDev
+      ? [new webpack.HotModuleReplacementPlugin()]
+      : [
+          // new PreloadWebpackPlugin({
+          //   rel: 'preload',
+          //   include: 'allAssets',
+          //   fileWhitelist: [/^main.*\.css$/],
+          // }),
+          new Critters({
+            // Outputs: <link rel="preload" onload="this.rel='stylesheet'">
+            preload: 'swap',
+            // Don't inline critical font-face rules, but preload the font URLs:
+            preloadFonts: true,
+          }),
+        ]
+  ),
 }

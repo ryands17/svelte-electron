@@ -9,12 +9,12 @@
 
   app.path('/', async (req, res) => {
     // res.mount(Base, { req, nav: app })
-    const { default: Home } = await import('./Home.svelte')
+    const Home = (await import('./Home.svelte')).default
     res.mount(Home)
   })
 
   app.path('/about', async (req, res) => {
-    const { default: About } = await import('./About.svelte')
+    const About = (await import('./About.svelte')).default
     res.mount(About)
   })
 
