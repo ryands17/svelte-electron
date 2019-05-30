@@ -1,8 +1,8 @@
 import App from './routes/Base.svelte'
 import './index.css'
 
-const main = new App({
+const app = new App({
   target: document.body,
 })
 
-export default main
+export default app

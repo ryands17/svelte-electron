@@ -1,22 +1,32 @@
 <script>
-  import * as crayon from 'crayon'
-  import * as svelte from 'crayon/svelte'
+  import { Router, Link, Route, navigate } from 'svelte-routing'
 
-  const target = document.getElementById('root')
-  const app = crayon.create()
+  import Nav from '../components/Nav.svelte'
+  import Home from './Home.svelte'
+  import About from './About.svelte'
 
-  app.use(svelte.router(target))
+  export let url = ''
 
-  app.path('/', async (req, res) => {
-    // res.mount(Base, { req, nav: app })
-    const Home = (await import('./Home.svelte')).default
-    res.mount(Home)
-  })
+  const routes = {
+    home: {
+      path: '/',
+      title: 'Home',
+    },
+    about: {
+      path: '/about',
+      title: 'About',
+    },
+  }
 
-  app.path('/about', async (req, res) => {
-    const About = (await import('./About.svelte')).default
-    res.mount(About)
-  })
-
-  app.load()
+  const renderRoutes = Object.entries(routes)
 </script>
+
+<Router {url}>
+  <Nav routes={renderRoutes} {navigate} />
+  <div>
+    <Route path={routes.about.path} component={About} />
+    <Route path={routes.home.path}>
+      <Home />
+    </Route>
+  </div>
+</Router>
