@@ -1,5 +1,6 @@
 <script>
-  export let navigate
+  import { links } from 'svelte-routing'
+
   export let routes
 </script>
 
@@ -10,15 +11,15 @@
     width: 40%;
     justify-content: space-around;
   }
-  li {
+  a {
     font-size: 20px;
     font-family: 'Courier New', Courier, monospace;
     cursor: pointer;
   }
 </style>
 
-<ul>
+<ul use:links>
   {#each routes as [key, val] (key)}
-    <li on:click={() => navigate(val.path)}> {val.title} </li>
+    <a href={val.path}>{val.title}</a>
   {/each}
 </ul>

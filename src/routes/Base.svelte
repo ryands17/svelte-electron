@@ -1,5 +1,5 @@
 <script>
-  import { Router, Link, Route, navigate } from 'svelte-routing'
+  import { Router, Route, navigate } from 'svelte-routing'
 
   import Nav from '../components/Nav.svelte'
   import Home from './Home.svelte'
@@ -22,7 +22,7 @@
 </script>
 
 <Router {url}>
-  <Nav routes={renderRoutes} {navigate} />
+  <Nav routes={renderRoutes} />
   <div>
     <Route path={routes.about.path} component={About} />
     <Route path={routes.home.path}>
