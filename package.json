@@ -2,10 +2,12 @@
   "name": "svelte-webpack",
   "version": "1.0.0",
   "description": "A simple Svelte app made using Webpack",
-  "main": "index.js",
+  "main": "public/electron.js",
+  "homepage": "./",
   "scripts": {
     "delete:build": "rimraf build",
     "prebuild": "npm run delete:build",
+    "electron-dev": "concurrently \"cross-env BROWSER=none npm start\" \"wait-on http://localhost:3000 && electron .\"",
     "start": "cross-env NODE_ENV=development webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack"
   },
@@ -17,10 +19,14 @@
   "author": "Ryan Dsouza",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^4.1.0",
     "critters-webpack-plugin": "^2.3.0",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.1",
     "dotenv-webpack": "^1.7.0",
+    "electron": "^5.0.2",
+    "electron-builder": "^20.41.0",
+    "electron-is-dev": "^1.1.0",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^2.3.0",
     "lint-staged": "^8.1.7",
@@ -33,9 +39,30 @@
     "svelte-loadable": "^1.0.1",
     "svelte-loader": "^2.13.4",
     "svelte-routing": "^1.1.1",
+    "wait-on": "^3.2.0",
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2",
     "webpack-dev-server": "^3.4.1"
+  },
+  "build": {
+    "productName": "Sveltectron",
+    "appId": "com.ryan.sveltectron",
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "deleteAppDataOnUninstall": true
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "AppImage"
+      ],
+      "category": "Internet"
+    }
   },
   "husky": {
     "hooks": {

@@ -3,11 +3,12 @@ const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // const PreloadWebpackPlugin = require('preload-webpack-plugin')
-const Critters = require('critters-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = process.env.NODE_ENV === 'production'
+const openBrowser = !(process.env.BROWSER === 'none')
+const publicPath = '/'
 
 module.exports = {
   mode: isDev ? 'development' : 'production',
@@ -28,7 +29,7 @@ module.exports = {
     contentBase: path.join(__dirname, 'build'),
     historyApiFallback: true,
     hot: false,
-    open: true,
+    open: openBrowser,
     stats: 'normal',
     port: 3000,
   },
@@ -37,7 +38,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, 'build'),
-    publicPath: '/',
+    publicPath,
     filename: isProd ? '[name].[contenthash:8].js' : 'bundle.js',
     chunkFilename: isProd
       ? '[name].[contenthash:8].chunk.js'
@@ -105,21 +106,5 @@ module.exports = {
           : undefined
       )
     ),
-  ].concat(
-    isDev
-      ? [new webpack.HotModuleReplacementPlugin()]
-      : [
-          // new PreloadWebpackPlugin({
-          //   rel: 'preload',
-          //   include: 'allAssets',
-          //   fileWhitelist: [/^main.*\.css$/],
-          // }),
-          new Critters({
-            // Outputs: <link rel="preload" onload="this.rel='stylesheet'">
-            preload: 'swap',
-            // Don't inline critical font-face rules, but preload the font URLs:
-            preloadFonts: true,
-          }),
-        ]
-  ),
+  ].concat(isDev ? [new webpack.HotModuleReplacementPlugin()] : []),
 }

@@ -1,30 +1,22 @@
-[Svelte](https://svelte.dev) + [Webpack](https://webpack.js.org/)
+[Svelte](https://svelte.dev) + [Webpack](https://webpack.js.org/) + [Electron](https://electronjs.org/)
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm run electron-dev`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Runs the electron app in the development mode.<br>
+The Electron app will open automatically.
 
-The page will reload if you make edits.<br>
+**Note:** Linux users if you're getting an error it's likely you need to follow [this issue](https://github.com/electron/electron/issues/17972)
+
+The app will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### `npm run build`
+### `npm run electron-pack`
 
-Builds the app for production to the `build` folder.<br>
-It correctly compiles Svelte in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-You can use any of the deployment sites like
-
-- [Netlify](https://www.netlify.com/)
-- [Surge](https://surge.sh/)
-- [Now](https://zeit.co/now/)
+Will be added soon (via `electron-builder`)
 
 ### Adding environment variables
 
@@ -35,6 +27,6 @@ Todos:
 
 - [x] ~~Add Navbar component for route navigation~~
 - [x] ~~Add environment variables support~~
+- [x] ~~Import component based .svelte files dynamically (add a loader as well)~~
 - [ ] Add emotion based styling (enhancement)
-- [ ] Import component based .svelte files dynamically (add a loader as well)
 - [ ] Add multiple environment files (.env.development, .env.production)
