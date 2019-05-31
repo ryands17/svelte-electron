@@ -1,9 +1,8 @@
 <script>
   import { Router, Route, navigate } from 'svelte-routing'
+  import Loadable from 'svelte-loadable'
 
   import Nav from '../components/Nav.svelte'
-  import Home from './Home.svelte'
-  import About from './About.svelte'
 
   export let url = ''
 
@@ -24,9 +23,21 @@
 <Router {url}>
   <Nav routes={renderRoutes} />
   <div>
-    <Route path={routes.about.path} component={About} />
-    <Route path={routes.home.path}>
-      <Home />
+    <!-- <Route path={routes.about.path}> -->
+    <Route path={routes.about.path}>
+      <Loadable loader={() => import('./About.svelte')}>
+        <div slot="success" let:component>
+          <svelte:component this={component} />
+        </div>
+      </Loadable>
     </Route>
+    <Route path={routes.home.path}>
+      <Loadable loader={() => import('./Home.svelte')}>
+        <div slot="success" let:component>
+          <svelte:component this={component} />
+        </div>
+      </Loadable>
+    </Route>
+    <!-- </Route> -->
   </div>
 </Router>

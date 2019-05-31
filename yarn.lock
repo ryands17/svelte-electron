@@ -5492,6 +5492,11 @@ svelte-dev-helper@^1.1.9:
   resolved "https://registry.yarnpkg.com/svelte-dev-helper/-/svelte-dev-helper-1.1.9.tgz#7d187db5c6cdbbd64d75a32f91b8998bde3273c3"
   integrity sha1-fRh9tcbNu9ZNdaMvkbiZi94yc8M=
 
+svelte-loadable@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/svelte-loadable/-/svelte-loadable-1.0.1.tgz#52981cb12fc45adbf5b847e70d7356434b2112ff"
+  integrity sha512-vGzF8DECJJy12sLX+avnRX5eXwoq12lCVJcAe5oILVMQr8R2gWeogkMuOKASggnagRJjXCLRpV9cFc/X55Idsw==
+
 svelte-loader@^2.13.4:
   version "2.13.4"
   resolved "https://registry.yarnpkg.com/svelte-loader/-/svelte-loader-2.13.4.tgz#f44b33583fb580f1d9d11016e9531dafa296bb51"
