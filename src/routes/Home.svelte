@@ -1,7 +1,7 @@
 <script>
   import Main from '../components/Main.svelte'
 
-  let count = parseInt(process.env.COUNT || 0)
+  let count = parseInt(process.env.COUNT) || 0
 </script>
 
 <style>
