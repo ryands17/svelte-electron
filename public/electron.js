@@ -6,9 +6,9 @@ const isDev = require('electron-is-dev')
 let mainWindow
 
 function createWindow() {
-  // var screenElectron = electron.screen;
-  // var mainScreen = screenElectron.getPrimaryDisplay();
-  // var dimensions = mainScreen.size;
+  // let screenElectron = electron.screen;
+  // let mainScreen = screenElectron.getPrimaryDisplay();
+  // let dimensions = mainScreen.size;
   mainWindow = new BrowserWindow({
     width: 1364,
     height: 768,
@@ -22,7 +22,7 @@ function createWindow() {
     isDev
       ? 'http://localhost:3000'
       : url.format({
-          pathname: path.join(__dirname, '../build/index.html'),
+          pathname: path.join(__dirname, '..', 'build', './index.html'),
           protocol: 'file:',
           slashes: true,
         })

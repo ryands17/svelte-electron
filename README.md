@@ -29,4 +29,3 @@ Todos:
 - [x] ~~Add environment variables support~~
 - [x] ~~Import component based .svelte files dynamically (add a loader as well)~~
 - [ ] Add emotion based styling (enhancement)
-- [ ] Add multiple environment files (.env.development, .env.production)

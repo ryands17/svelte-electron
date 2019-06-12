@@ -5,18 +5,21 @@
   "main": "public/electron.js",
   "homepage": "./",
   "scripts": {
-    "delete:build": "rimraf build",
-    "prebuild": "npm run delete:build",
-    "electron-dev": "concurrently \"cross-env BROWSER=none npm start\" \"wait-on http://localhost:3000 && electron .\"",
-    "start": "cross-env NODE_ENV=development webpack-dev-server",
-    "build": "cross-env NODE_ENV=production webpack"
+    "start": "concurrently \"cross-env BROWSER=none npm run start:client\" \"wait-on http://localhost:3000 && run-electron .\"",
+    "start:client": "cross-env NODE_ENV=development webpack-dev-server",
+    "delete:build": "rimraf build dist",
+    "copy:electron": "cp public/electron.js build/electron.js",
+    "prebuild": "npm run delete:build && npm run build:client && npm run copy:electron",
+    "build": "electron-builder build -l",
+    "build:client": "cross-env NODE_ENV=production webpack"
   },
   "keywords": [
     "svelte3",
     "routing",
-    "webpack4"
+    "webpack4",
+    "electron5"
   ],
-  "author": "Ryan Dsouza",
+  "author": "Ryan Dsouza <dsouza.ryan.11@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^4.1.0",
@@ -26,7 +29,6 @@
     "dotenv-webpack": "^1.7.0",
     "electron": "^5.0.3",
     "electron-builder": "^20.43.0",
-    "electron-is-dev": "^1.1.0",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^2.4.0",
     "lint-staged": "^8.2.0",
@@ -34,6 +36,7 @@
     "preload-webpack-plugin": "^3.0.0-beta.3",
     "prettier": "^1.18.2",
     "rimraf": "^2.6.3",
+    "run-electron": "^1.0.0",
     "style-loader": "^0.23.1",
     "svelte": "^3.4.4",
     "svelte-loadable": "^1.0.1",
@@ -47,6 +50,10 @@
   "build": {
     "productName": "Sveltectron",
     "appId": "com.ryan.sveltectron",
+    "files": [
+      "build/**/*",
+      "public/*"
+    ],
     "win": {
       "target": [
         "nsis"
@@ -79,5 +86,8 @@
     "semi": false,
     "singleQuote": true,
     "trailingComma": "es5"
+  },
+  "dependencies": {
+    "electron-is-dev": "^1.1.0"
   }
 }

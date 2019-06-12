@@ -2,39 +2,28 @@ const path = require('path')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const PreloadWebpackPlugin = require('preload-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
+const packageJSONConfig = require('./package.json')
 
 const isDev = process.env.NODE_ENV === 'development'
-const isProd = process.env.NODE_ENV === 'production'
+const isProd = !isDev
 const openBrowser = !(process.env.BROWSER === 'none')
-const publicPath = '/'
+const publicPath = isDev ? '/' : packageJSONConfig.homepage
 
-module.exports = {
+const svelteConfig = {
   mode: isDev ? 'development' : 'production',
   bail: isProd,
   devtool: isDev ? 'cheap-module-source-map' : false,
-
-  stats: {
-    all: false,
-    modules: true,
-    maxModules: 50,
-    errors: true,
-    warnings: true,
-    moduleTrace: true,
-    errorDetails: true,
-  },
 
   devServer: {
     contentBase: path.join(__dirname, 'build'),
     historyApiFallback: true,
     hot: false,
     open: openBrowser,
-    stats: 'normal',
     port: 3000,
   },
 
-  entry: ['./src/index.js'],
+  entry: './src/index.js',
 
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -108,3 +97,5 @@ module.exports = {
     ),
   ].concat(isDev ? [new webpack.HotModuleReplacementPlugin()] : []),
 }
+
+module.exports = [svelteConfig]
